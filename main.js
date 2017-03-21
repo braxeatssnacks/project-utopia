@@ -1,13 +1,21 @@
-const electron = require("electron");
+// electron wrapper
+const electron = require('electron');
+
 // module that controls app lifecycle
 const { app } = electron;
+
 // module to create native window
 const { BrowserWindow } = electron;
+
+// express app configuration
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync('config.json')); 
 
 // global window reference
 let win;
 
-/* HANDLE STAGES OF APP LIFECYCLE */
+
+/* HANDLE STAGES OF ELECTRON WRAPPER LIFECYCLE */
 
 // [ BEFORE READY ]
 app.on('will-finish-launching', prepareApp);
@@ -21,12 +29,16 @@ app.on('window-all-closed', windowsAllClosed);
 // [ RE-OPEN ]
 app.on('activate', onActivate);
 
+
 /* HELPER FUNCTIONS */
 
 function createWindow() {
+  // instantiate app server
+  app.server = require(`${__dirname}/app/app.js`)();
+
   // create new draggable window
    win = new BrowserWindow({
-     title: "Project Utopia",
+     title: 'Project Utopia',
      minWidth: 1000,
      minHeight: 600,
      width: 1200,
@@ -34,10 +46,11 @@ function createWindow() {
      titleBarStyle: 'hidden-inset',
    });
 
-  // load app view
-  win.loadURL(`file://${__dirname}/game/index.html`);
+  // load app index.html
+  win.loadURL(`http://localhost:${config.server.port}`);
 
   // console.log(win);
+  win.focus();
 
   // handle close
   win.on('closed', function() {
@@ -62,5 +75,5 @@ function windowsAllClosed() {
 
 function prepareApp() {
   // do something before the app starts up
-  console.log("... and we're live, baby!");
+  console.log("... and we're live, baby, yeeeeeahhhhhh!");
 }

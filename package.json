@@ -2,21 +2,26 @@
   "name": "project-utopia",
   "description": "a real-time code teaching tool and game for all ages",
   "version": "0.1.0",
-  "main": "app.js",
+  "main": "main.js",
   "author": "Braxton Gunter <beg2119@columbia.edu>",
-  "contributors": [{
-    "name": "Fredrick Tam",
-    "email": "fkt2105@columbia.edu" 
-  },
-  {
-    "name": "Aditi Hudli",
-    "email": "aah2183@columbia.edu" 
-  }],
+  "contributors": [
+    {
+      "name": "Fredrick Tam",
+      "email": "fkt2105@columbia.edu"
+    },
+    {
+      "name": "Aditi Hudli",
+      "email": "aah2183@columbia.edu"
+    }
+  ],
   "scripts": {
-    "start": "electron app.js"
+    "start": "electron main.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "electron": "^1.6.1",
+    "express": "^4.15.2",
+    "express-hbs": "^1.0.4",
     "phaser": "^2.6.2"
   }
 }
