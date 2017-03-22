@@ -1,0 +1,81 @@
+/* font-family: "Inconsolata", monospace; */
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
+/* font-family: "Gotham Rounded", sans-serif; */
+@import url("../fonts/gotham_rounded.css");
+
+/* electron tings */
+
+#__titlebar__ {
+  width: 100vw;
+  height: 22px;
+  background-color: #3B3F41;
+  -webkit-app-region: drag;
+}
+
+#__window__, main {
+  height: inherit;
+  width: inherit;
+}
+
+/* general */
+
+* {
+  box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	border-radius: inherit;
+	color: inherit;
+	text-align: inherit;
+}
+
+html, body, ul, h1, h2, h3, h4, h5, h6, p, em, strong {
+ 	padding: 0;
+ 	margin: 0;
+}
+
+html, body {
+	position: relative;
+	height: 100vh;
+  width: 100vw;
+	overflow: hidden;
+	background-color: #2F2732;
+	border-color: #404F5A;
+
+	font-family: "Gotham Rounded", monospace;
+	font-size: 20px;
+	font-weight: 400;
+	color: #FFFFFF;
+	letter-spacing: 0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* nav head */
+
+nav {
+  background-color: #FF5A61;
+  font-size: 14px;
+  height: 75px;
+}
+
+nav ul {
+  height: 100%;
+  padding-right: 50px;
+}
+
+nav ul li {
+  list-style: none;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+nav ul li:first-child {
+  padding-left: 0;
+}
+nav ul li:last-child {
+  padding-right: 0;
+}

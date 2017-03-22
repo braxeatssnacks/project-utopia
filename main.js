@@ -43,11 +43,12 @@ function createWindow() {
      minHeight: 600,
      width: 1200,
      height: 800,
-     titleBarStyle: 'hidden-inset',
+     fullscreen: false,
+     titleBarStyle: 'hidden'
    });
 
   // load app index.html
-  win.loadURL(`http://localhost:${config.server.port}`);
+  win.loadURL(`http://${config.server.host}:${config.server.port}`);
 
   // console.log(win);
   win.focus();
