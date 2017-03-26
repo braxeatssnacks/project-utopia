@@ -1,11 +1,18 @@
 module.exports = function(modules) {
+  // refrerences to phaser modular components
+
+ 
   /* game API */
   let router = modules.app;
   
   // overall
   router.route('/game')
     .get(function(req, resp) { // render game
-      var gameID = req.param('id');
+      var gameID = req.body;
+      var data = {
+        'name': 'Braxton Gunter'
+      };
+      resp.render('game', data);      
     })
     .post(function(req, resp) { // update game
     });

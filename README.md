@@ -14,12 +14,14 @@ electron wrapped express app
         * _css/_
         * _img/_
         * _js/_
+    * _resources/_ - `dev/bundling configurations`
     * _tests/_ - `QA testing`
     * _utils/_ - `utility functions to be used throughout app`
     * _views/_ - `provides templates to be rendered/served by routes`
     * _app.js_ - `initializes app`
 * _package.json_ - `just node tings`
-* _resources_ - `junk`
+* _resources/_ - `junk`
 * _main.js_ - `initializes desktop app wrapper`
+* _webpack.config.js_ - `webpack configuration for bundling`
 * _config.json_ - `app config variables`
 * _package.json_ - `just node tings`

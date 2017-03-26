@@ -14,7 +14,6 @@ const config = JSON.parse(fs.readFileSync('config.json'));
 // global window reference
 let win;
 
-
 /* HANDLE STAGES OF ELECTRON WRAPPER LIFECYCLE */
 
 // [ BEFORE READY ]
@@ -33,8 +32,10 @@ app.on('activate', onActivate);
 /* HELPER FUNCTIONS */
 
 function createWindow() {
-  // instantiate app server
-  app.server = require(`${__dirname}/app/app.js`)();
+  // instantiate app server if not already running
+  if (!app.hasOwnProperty('server')) {
+    app.server = require(`${__dirname}/app/app.js`)(config);
+  } 
 
   // create new draggable window
    win = new BrowserWindow({

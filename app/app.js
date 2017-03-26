@@ -1,9 +1,8 @@
 // app server callback
-module.exports = function() {
+module.exports = function(config) {
+
   // server configuration
   const fs = require('fs');
-  const config = JSON.parse(fs.readFileSync('config.json'));
-
   const express = require('express');
   const app = express();  
 
