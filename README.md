@@ -20,7 +20,7 @@ electron wrapped express app
     * _views/_ - `provides templates to be rendered/served by routes`
     * _app.js_ - `initializes app`
 * _package.json_ - `just node tings`
-* _resources/_ - `junk`
+* _plans/_ - `junk`
 * _main.js_ - `initializes desktop app wrapper`
 * _webpack.config.js_ - `webpack configuration for bundling`
 * _config.json_ - `app config variables`
