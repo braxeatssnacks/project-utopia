@@ -3,6 +3,3 @@ node_modules
 
 # configurations shouldn't be seen
 config.json
-
-# resources folder
-resources
