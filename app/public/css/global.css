@@ -13,7 +13,7 @@
 }
 
 #__window__, main {
-  height: inherit;
+  height: calc(100vh - 22px);
   width: inherit;
 }
 
@@ -38,7 +38,6 @@ html, body {
 	position: relative;
 	height: 100vh;
   width: 100vw;
-	overflow: hidden;
 	background-color: #2F2732;
 	border-color: #404F5A;
 

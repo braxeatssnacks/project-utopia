@@ -1,9 +1,9 @@
 module.exports = function(modules) {
-  // refrerences to phaser modular components
-
  
   /* game API */
   let router = modules.app;
+  
+  
   
   // overall
   router.route('/game')
