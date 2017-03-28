@@ -1,27 +1,51 @@
 #game {
   height: 100%;
   width: 100%;
-  background: #FFFFFF;
+  background: #F4EEE7;
 }
 
 #code-panel {
   height: 100%;
   background: #1A191A;
-  opacity: 0.9;
   font-family: "Inconsolata", monospace;
   font-size: 13px;
 }
 
 #code-panel .code-header {
+  position: relative;
   height: 30px;
   width: 100%;
   background: #000000;
   text-align: center;
 }
 
-.code-header .head-icon {
+#code-panel .header-button {
+  height: 42px;
+  width: 42px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -21px;
+  margin-left: -21px;
+  cursor: pointer;
+}
+
+#code-panel .head-icon-background {
+  position: relative;
   height: 100%;
+  width: 100%;
+  background: #007A87;
+}
+
+.code-header .head-icon {
+  height: 30px;
+  width: 16px;
   padding: 3px 0 3px 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -8px;
+  margin-top: -15px;
 }
 
 #code-panel .code-container {
