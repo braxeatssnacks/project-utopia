@@ -1,6 +1,7 @@
 module.exports = function(modules) {
   /* auth API */
   let router = modules.app;
+  let pg = modules.pg; // db
 
   // login
   router.post('/login', function(req, resp) {

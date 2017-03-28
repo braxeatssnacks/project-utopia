@@ -2,6 +2,7 @@ module.exports = function(modules) {
  
   /* game API */
   let router = modules.app;
+  let pg = modules.pg; // db
   
   
   

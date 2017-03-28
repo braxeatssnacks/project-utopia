@@ -3,6 +3,7 @@ module.exports = function(config) {
 
   // server configuration
   const fs = require('fs');
+  const pg = require('pg');
   const express = require('express');
   const app = express();  
 
@@ -30,8 +31,11 @@ module.exports = function(config) {
     bodyParser: bodyParser,
     config: config, 
     express: express,
-    fs: fs
+    fs: fs,
+    pg: pg
   };
+
+  // db stuff
 
   // setup global route controllers
   fs.readdirSync(`${__dirname}/controllers`).forEach(function(filename) {
