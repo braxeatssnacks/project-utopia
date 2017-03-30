@@ -7,7 +7,16 @@
     "host": "localhost",
     "port": 5000
   },
+  "db": {
+    "user": "whoami", 
+    "database": "dbName", 
+    "password": "secret",
+    "host": "localhost",
+    "port": "number",
+    "max": 10,
+    "idleTimeoutMillis": 3000
+  },
   "session": {
-    "secret": "youReallyThoughtIWasJustGonnaGiveThisOut?"
+    "secret": "secret"
   }
 }

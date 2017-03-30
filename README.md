@@ -4,6 +4,8 @@ you know what time it is
 
 electron wrapped express app
 
+!!! set personal configurations in config.json
+
 ##### DIRECTORY STRUCTURE
 
 * _app/_ - `meat & potatoes`

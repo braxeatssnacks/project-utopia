@@ -11,6 +11,9 @@ const { BrowserWindow } = electron;
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('config.json')); 
 
+// print env variables
+console.log(process.env.PGUSER);
+
 // global window reference
 let win;
 
@@ -49,7 +52,7 @@ function createWindow() {
    });
 
   // load app index.html
-  win.loadURL(`http://${config.server.host}:${config.server.port}/game`);
+  win.loadURL(`http://${config.server.host}:${config.server.port}/`);
 
   // console.log(win);
   win.focus();
