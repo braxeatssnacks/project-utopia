@@ -25,6 +25,11 @@ User.prototype.changeEmail = function(email) {
   this.data.email = email;
 };
 
+// change object data email property 
+User.prototype.changePassword = function(pass) {
+  this.data.pass = pass; // TODO: hash function
+};
+
 // retrieve object data name property 
 User.prototype.getName = function() {
   return this.data.name;
@@ -68,13 +73,13 @@ User.prototype.save = function(callback) {
 
 /* STATIC METHODS */
 
-// locate user info in db by id
+// SELECT user info retrieve by id
 User.findByID = function(id, callback) {
   // query
-  var q = Util.SQL`SELECT * FROM users WHERE id=${id}`;
+  var q = Util.SQL`SELECT * FROM users WHERE id = ${id}`;
   pool.query(q, function(err, data) { 
     if (err) return callback(err);
-    return callback(null, new User(data)); // return User
+    return callback(null, new User(data.rows[0])); // return User
   });
 };
 

@@ -1,7 +1,9 @@
+/* auth API */
 module.exports = function(modules) {
-  /* auth API */
   let router = modules.app;
-  let pg = modules.pg; // db
+  let pool = modules.pool;
+
+  let User = require(`${__dirname}/../models/user.js`); // User
 
   // login
   router.post('/login', function(req, resp) {

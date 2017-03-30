@@ -1,5 +1,5 @@
+/* INDEX PAGE */
 module.exports = function(modules) {
-  /* INDEX PAGE */
   let router = modules.app;
 
   // default
