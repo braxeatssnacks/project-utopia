@@ -5,29 +5,51 @@ const pool = require(`${__dirname}/../utils/database.js`);
 
 let Util = require(`${__dirname}/../utils/util.js`); // utility
 
+/* CONSTRUCTOR */
+
 var User = function(data) {
   // create appropriate struct
   this.data = this.sanitize(data);
 };
 
+User.prototype.data = {};
 
 /* IMPLEMENTATION INHERITED METHODS  */
 
-User.prototype.data = {};
-
 // change object data name property 
 User.prototype.changeName = function(name) {
-  this.data.name = name;
+  var self = this;
+  sef.data.name = name;
+  
+  // query
+  var q = Util.SQL`UPDATE users SET name=${self.data.name}\
+    WHERE id=${self.data.id}`;
+
+  pool.query(q, function(err, data) { 
+    if (err) return callback(err); 
+    return callback(null, true); // return success
+  });
 };
 
 // change object data email property 
 User.prototype.changeEmail = function(email) {
-  this.data.email = email;
+  var self = this;
+  self.data.email = email;
+
+  // query
+  var q = Util.SQL`UPDATE users SET email=${self.data.email}\
+    WHERE id=${self.data.id}`;
+
+  pool.query(q, function(err, data) { 
+    if (err) return callback(err); 
+    return callback(null, true); // return success
+  });
 };
 
 // change object data email property 
 User.prototype.changePassword = function(pass) {
-  this.data.pass = pass; // TODO: hash function
+  var self = this;
+  self.data.pass = pass; // TODO: hash function
 };
 
 // retrieve object data name property 
@@ -52,22 +74,25 @@ User.prototype.save = function(callback) {
   var self = this;
   self.data = self.sanitize(self.data);
 
-  // query
-  var q = Util.SQL`INSERT INTO users(\
-    name,\
-    email,\
-    password\
-  )\ 
-  VALUES(\
-    ${self.data.name.trim()},\
-    ${self.data.email.trim()},\
-    ${self.data.password.trim()}\
-  )`;
-
-  pool.query(q, function(err, data) { 
-    if (err) return callback(err); 
-    return callback(null, true); // return success
-  });
+  if (self.data.id == null) { // new entry
+    // query
+    var q = Util.SQL`INSERT INTO users(\
+      name,\
+      email,\
+      password\
+    )\ 
+    VALUES(\
+      ${self.data.name.trim()},\
+      ${self.data.email.trim()},\
+      ${self.data.password.trim()}\
+    )`; 
+    
+    pool.query(q, function(err, data) { 
+      if (err) return callback(err); 
+      return callback(null, true); // return success
+    });
+  } 
+  return callback(null, false); // existing entry
 };
 
 
