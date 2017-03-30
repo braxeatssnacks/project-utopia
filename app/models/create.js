@@ -15,7 +15,7 @@ var CREATE_DB_STRUCT = {
   id SERIAL PRIMARY KEY, \
   user_id integer, \
   classroom_id varchar(50), \
-  last_accessed_date date, \
+  date_accessed date, \
   email varchar(100), \
   PRIMARY KEY(id), \
   FOREIGN KEY(user_id) REFERENCES users)',

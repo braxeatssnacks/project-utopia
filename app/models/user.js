@@ -16,22 +16,22 @@ User.prototype.data = {};
 
 /* IMPLEMENTATION INHERITED METHODS  */
 
-// change object data name property 
+// change object data name property
 User.prototype.changeName = function(name) {
   var self = this;
   sef.data.name = name;
-  
+
   // query
   var q = Util.SQL`UPDATE users SET name=${self.data.name}\
     WHERE id=${self.data.id}`;
 
-  pool.query(q, function(err, data) { 
-    if (err) return callback(err); 
+  pool.query(q, function(err, data) {
+    if (err) return callback(err);
     return callback(null, true); // return success
   });
 };
 
-// change object data email property 
+// change object data email property
 User.prototype.changeEmail = function(email) {
   var self = this;
   self.data.email = email;
@@ -40,26 +40,21 @@ User.prototype.changeEmail = function(email) {
   var q = Util.SQL`UPDATE users SET email=${self.data.email}\
     WHERE id=${self.data.id}`;
 
-  pool.query(q, function(err, data) { 
-    if (err) return callback(err); 
+  pool.query(q, function(err, data) {
+    if (err) return callback(err);
     return callback(null, true); // return success
   });
 };
 
-// change object data email property 
+// change object data email property
 User.prototype.changePassword = function(pass) {
   var self = this;
   self.data.pass = pass; // TODO: hash function
 };
 
-// retrieve object data name property 
-User.prototype.getName = function() {
-  return this.data.name;
-};
-
-// retrieve object data email property 
-User.prototype.getEmail = function() {
-  return this.data.email;
+// retrieve object data property
+User.prototype.get = function(property) {
+  return this.data[property];
 };
 
 // sanitize USER struct
@@ -80,19 +75,19 @@ User.prototype.save = function(callback) {
       name,\
       email,\
       password\
-    )\ 
+    )\
     VALUES(\
       ${self.data.name.trim()},\
       ${self.data.email.trim()},\
       ${self.data.password.trim()}\
-    )`; 
-    
-    pool.query(q, function(err, data) { 
-      if (err) return callback(err); 
+    )`;
+
+    pool.query(q, function(err, data) {
+      if (err) return callback(err);
       return callback(null, true); // return success
     });
-  } 
-  return callback(null, false); // existing entry
+  }
+  return callback("entry already exists: update instead of save"); // existing entry
 };
 
 
@@ -102,7 +97,7 @@ User.prototype.save = function(callback) {
 User.findByID = function(id, callback) {
   // query
   var q = Util.SQL`SELECT * FROM users WHERE id = ${id}`;
-  pool.query(q, function(err, data) { 
+  pool.query(q, function(err, data) {
     if (err) return callback(err);
     return callback(null, new User(data.rows[0])); // return User
   });
