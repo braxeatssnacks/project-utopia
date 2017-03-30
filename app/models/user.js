@@ -99,7 +99,7 @@ User.findByID = function(id, callback) {
   var q = Util.SQL`SELECT * FROM users WHERE id = ${id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
-    return callback(null, new User(data.rows[0])); // return User
+    return callback(null, new User(data.rows[0]).data); // return User
   });
 };
 

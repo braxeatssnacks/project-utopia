@@ -1,3 +1,5 @@
+/* game */
+
 #game {
   height: 100%;
   width: 100%;
@@ -75,4 +77,58 @@
 
 #code-panel .submit-button:hover {
   background: #00d073;
+}
+
+/* gamelist */
+
+.title-spot {
+  margin-bottom: 40px;
+}
+
+.games-section {
+  width: 20%;
+  max-width: 700px;
+  margin: auto;
+}
+
+.gamelist {
+  height: 360px;
+  width: 100%;
+  color: #000000;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.games-section {
+  width: 65%;
+}
+
+[class*="game-button"] {
+  border-radius: 40px;
+  background-color: #e7e7e7;
+  border: 3px solid #e7e7e7;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  transition: 0.3s;
+}
+[class*="game-button"]:first-child {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+[class*="game-button"]:hover {
+  background-color: #ffffff;
+  border-color: #007A87;
+}
+
+.new-game-button {
+  color: #ffffff;
+  background-color: #EF3E42;
+  border-color: #EF3E42;
+}
+
+.new-game-button:hover {
+  background-color: #009D57;
+  cursor: pointer;
 }

@@ -7,33 +7,22 @@ module.exports = function(modules) {
   let User = require(`${__dirname}/../models/user.js`); // User
   let Game = require(`${__dirname}/../models/game.js`); // Game
 
-  var testID = 10;
+  var testID = 10; // TODO: set up session to hold user_id
 
-  // list view of all existing games
   router.route('/gamelist')
-    .get(function(req, resp) {
+    .get(function(req, resp) { // render view of games list
       var id = req.query.id || testID;
-      var params = {}; // object passed to view
 
-      // User.findByID(id, function(err, data) { // get user info
-      //   if (err) console.log("error: ", err);
-      //   params['user'] = data;
-      //
-      //   Game.listByUserID(id, function(err, data) { // get games list
-      //     if (err) console.log('error: ', err);
-      //     console.log(data);
-      //   });
-      // });
-
-      resp.render('gamelist', params);
+      Game.listByUserID(id, function(err, games) { // get games list
+        if (err) console.log('error: ', err);
+        resp.render('gamelist', { games: games });
+      });
     })
-    .post(function(req, resp) {
-
+    .post(function(req, resp) { // create game
       var gameConfig = {
         user_id: parseInt(req.body.user_id || testID),
         classroom_id: parseInt(req.body.classroom_id || null)
       };
-
       var newGame = new Game(gameConfig);
       console.log('newgame: ', newGame);
       newGame.save(function(err, data) {

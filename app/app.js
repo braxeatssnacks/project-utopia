@@ -4,16 +4,16 @@ module.exports = function(config) {
   // server configuration
   const fs = require('fs');
   const express = require('express');
-  const app = express();  
+  const app = express();
 
   // set-up db jazz
   const pg = require('pg');
   const pool = require('./utils/database.js');
-  
+
   // set view engine/config
   const hbs = require('express-hbs');
-  app.engine('hbs', hbs.express4({ 
-    defaultLayout: `${__dirname}/views/layouts/main.hbs`, 
+  app.engine('hbs', hbs.express4({
+    defaultLayout: `${__dirname}/views/layouts/main.hbs`,
     layoutsDir: `${__dirname}/views/layouts`,
     partialsDir: `${__dirname}/views/partials`
   }));
@@ -30,9 +30,9 @@ module.exports = function(config) {
 
   // modules for dependency injection
   const modules = {
-    app: app, 
+    app: app,
     bodyParser: bodyParser,
-    config: config, 
+    config: config,
     express: express,
     fs: fs,
     pool: pool

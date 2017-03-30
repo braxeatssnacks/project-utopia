@@ -53,34 +53,6 @@ a {
   color: inherit;
 }
 
-/* nav head */
-
-nav {
-  background-color: #FF5A61;
-  color: #3B3F41;
-  font-size: 14px;
-  height: 75px;
-}
-
-nav ul {
-  height: 100%;
-}
-
-nav ul li {
-  list-style: none;
-  padding: 0 10px;
-  cursor: pointer;
-/*  height: 100%;*/
-  transition: 0.3s;
-}
-
-nav ul li:hover {
-  color: #FFFFFF;
-}
-
-nav ul li:first-child {
-  padding-left: 0;
-}
-nav ul li:last-child {
-  padding-right: 0;
+a.anchor-block {
+  display: block;
 }

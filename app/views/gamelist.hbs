@@ -1,1 +1,25 @@
-{{ params }}
+
+<div class="gamelist-wrapper flex-center">
+
+  <div class="games-section">
+
+    <div class="title-spot">
+      <h1 class="title">games</h1>
+      <!-- <img class="spaceship-img" src="img/spaceship.svg" /> -->
+    </div>
+
+    <div class="gamelist rounded">
+      {{#if games}}
+        {{#each games}}
+          <a href="/game?id={{id}}" class="game-button anchor-block">
+            game-{{@index}}
+          </a>
+        {{/each}}
+      {{else}}
+        You have no games! Let's start one.
+      {{/if}}
+      <div id="new-game" class="new-game-button anchor-block">new game</div>
+    </div>
+  </div>
+
+</div>

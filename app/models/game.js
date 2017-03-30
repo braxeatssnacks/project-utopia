@@ -90,7 +90,7 @@ Game.findByID = function(id, callback) {
   var q = Util.SQL`SELECT * FROM games WHERE id=${id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
-    return callback(null, new Game(data.rows[0])); // return Game
+    return callback(null, new Game(data.rows[0]).data); // return Game
   });
 };
 
@@ -101,7 +101,12 @@ Game.listByUserID = function(user_id, callback) {
    ORDER BY date_accessed DESC`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
-    return callback(null, new Game(data.rows)); // return List<Game>
+    var results = [];
+    // iterate over rows
+    data.rows.forEach(function(entry, index) {
+      results.push(new Game(entry).data);
+    });
+    return callback(null, results); // return List<Game>
   });
 };
 
