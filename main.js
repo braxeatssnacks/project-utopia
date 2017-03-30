@@ -9,10 +9,7 @@ const { BrowserWindow } = electron;
 
 // express app configuration
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('config.json')); 
-
-// print env variables
-console.log(process.env.PGUSER);
+const config = JSON.parse(fs.readFileSync('config.json'));
 
 // global window reference
 let win;
@@ -38,7 +35,7 @@ function createWindow() {
   // instantiate app server if not already running
   if (!app.hasOwnProperty('server')) {
     app.server = require(`${__dirname}/app/app.js`)(config);
-  } 
+  }
 
   // create new draggable window
    win = new BrowserWindow({

@@ -3,10 +3,13 @@ module.exports = function(config) {
 
   // server configuration
   const fs = require('fs');
-  const pg = require('pg');
   const express = require('express');
   const app = express();  
 
+  // set-up db jazz
+  const pg = require('pg');
+  const pool = require('./utils/database.js');
+  
   // set view engine/config
   const hbs = require('express-hbs');
   app.engine('hbs', hbs.express4({ 
@@ -32,10 +35,8 @@ module.exports = function(config) {
     config: config, 
     express: express,
     fs: fs,
-    pg: pg
+    pool: pool
   };
-
-  // db stuff
 
   // setup global route controllers
   fs.readdirSync(`${__dirname}/controllers`).forEach(function(filename) {
