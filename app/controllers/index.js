@@ -6,4 +6,4 @@ module.exports = function(modules) {
   router.get('/', function(req, resp) {
     resp.render('index');
   });
-}
+};

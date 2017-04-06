@@ -45,4 +45,4 @@ module.exports = function(config) {
 
   // start server
   app.listen(config.server.port, config.server.host);
-}
+};

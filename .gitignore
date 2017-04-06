@@ -6,3 +6,9 @@ config.json
 
 # shell scripts
 bin
+
+# IDE stuff
+.idea
+
+# CI Testing
+.travis.yml

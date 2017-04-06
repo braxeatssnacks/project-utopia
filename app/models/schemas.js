@@ -22,4 +22,4 @@ module.exports = {
     attempts: 0,
     code: null,
   }
-}
+};

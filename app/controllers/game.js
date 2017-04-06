@@ -15,7 +15,7 @@ module.exports = function(modules) {
 
       Game.listByUserID(id, function(err, games) { // get games list
         if (err) console.log('error: ', err);
-        resp.render('gamelist', { games: games });
+        resp.render('gamelist', { layout: 'intercom', games: games });
       });
     })
     .post(function(req, resp) { // create game
@@ -37,4 +37,4 @@ module.exports = function(modules) {
     })
     .post(function(req, resp) { // update game
     });
-}
+};

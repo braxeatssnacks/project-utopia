@@ -1,7 +1,6 @@
 const pg = require('pg');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync(`${__dirname}/../../config.json`));
-const name = JSON.parse(fs.readFileSync(`${__dirname}/../../config.json`)).name;
 
 // info
 var dbConfig = {

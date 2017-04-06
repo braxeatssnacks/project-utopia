@@ -8,15 +8,17 @@ module.exports = function(modules) {
   // login
   router.post('/login', function(req, resp) {
     // log in user
+    resp.render('login', { layout: 'intercom' });
   });
 
   // sign-up
   router.post('/signup', function(req, resp) {
     // create user
+    resp.render('signup', { layout: 'intercom' });
   });
 
   // account recovery
   router.post('forgot', function(req, resp) {
     // send account recovery email
   });
-}
+};
