@@ -17,7 +17,7 @@
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
     "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else electron main.js; fi",
-    "test": "./bin/test-travis.sh"
+    "test": " ./app/tests/test-travis.sh"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
