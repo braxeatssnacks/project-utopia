@@ -7,7 +7,7 @@ var dbConfig = {
   user: process.env.PGUSER || config.db.user,
   password: process.env.PGPASSWORD || config.db.password,
   database: process.env.PGDATABASE || config.db.database,
-  host: process.env.PGHOST || conig.db.host,
+  host: process.env.PGHOST || config.db.host,
   port: process.env.PGPORT || config.db.port,
   max: config.db.max, // maximum num of clients in pool
   idleTimeoutMillis: config.db.idleTimeoutMillis // how long client can remain idle before closure

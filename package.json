@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
-    "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else electron main.js; fi"
+    "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else electron main.js; fi",
+    "test": "mocha -R spec ./app/tests/spec.js"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -31,6 +32,8 @@
     "webpack": "^2.3.2"
   },
   "devDependencies": {
-    "phaser-debug": "^1.1.8"
+    "mocha": "^3.2.0",
+    "phaser-debug": "^1.1.8",
+    "supertest": "^3.0.0"
   }
 }
