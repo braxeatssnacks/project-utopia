@@ -17,7 +17,6 @@
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
     "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else electron main.js; fi",
-//    "test": "mocha -R spec ./app/tests/spec.js"
     "test": "./bin/test-travis.sh"
   },
   "dependencies": {
