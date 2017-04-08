@@ -5,3 +5,7 @@ node_js:
 # create test db
 before_script:
   - psql -c 'create database test;' -U postgres
+
+# script
+script:
+  - npm test
