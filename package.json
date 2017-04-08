@@ -32,8 +32,7 @@
     "webpack": "^2.3.2"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
     "phaser-debug": "^1.1.8",
-    "supertest": "^3.0.0"
+    "vows": "^0.8.1"
   }
 }
