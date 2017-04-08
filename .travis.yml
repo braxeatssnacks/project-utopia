@@ -1,5 +1,7 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
   - "6"
+
+# create test db
+before_script:
+  - psql -c 'create database test;' -U postgres
