@@ -13,10 +13,4 @@ describe('loading express', function() {
       // server.close(done);
       server = null; // TODO
   });
-  // home index
-  it('responds to /', function testIndex(done) {
-      request(server)
-          .get('/')
-          .expect(200, done);
-  });
 });
