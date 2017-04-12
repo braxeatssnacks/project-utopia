@@ -11,10 +11,12 @@ module.exports = {
     id: null,
     user_id: null,
     classroom_id: null,
-    date_accessed: null
+    date_accessed: null,
+    current_stage: null,
   },
   stage: {
-    stage_id: null,
+    id: null,
+    user_id: null,
     game_id: null,
     date_started: null,
     date_updated: null,

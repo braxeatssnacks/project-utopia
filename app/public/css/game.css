@@ -4,6 +4,8 @@
   height: 100%;
   width: 100%;
   background: #F4EEE7;
+  position: absolute;
+  z-index: 0;
 }
 
 #code-panel {
@@ -11,6 +13,10 @@
   background: #1A191A;
   font-family: "Inconsolata", monospace;
   font-size: 13px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
 #code-panel .code-header {

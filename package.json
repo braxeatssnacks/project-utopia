@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
-    "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else electron main.js; fi",
+    "start": "if [ -e 'bin/run.sh' ]; then source bin/run.sh; else echo 'run script not found' && electron main.js; fi",
     "test": " ./app/tests/test-travis.sh"
   },
   "dependencies": {
