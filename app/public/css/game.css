@@ -10,13 +10,16 @@
 
 #code-panel {
   height: 100%;
-  background: #1A191A;
+  /*background: #1A191A;*/
+  background: rgba(0,0,0,0.9);
   font-family: "Inconsolata", monospace;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 20px;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 100;
+  /*display: none;*/
 }
 
 #code-panel .code-header {
@@ -58,12 +61,12 @@
 
 #code-panel .code-container {
   height: calc(100% - 30px);
-  padding: 10px 0 10px 10px;
+  padding: 14px 0 14px 14px;
 }
 
 #code-panel .code {
   height: calc(100% - 30px);
-  padding: 0 10px 25px 0;
+  padding: 0 14px 25px 0;
   overflow-y: scroll;
   width: 100%;
   outline: 0;
@@ -71,7 +74,7 @@
 
 #code-panel .submit-button {
   height: 30px;
-  width: calc(100% - 10px);
+  width: calc(100% - 14px);
   padding: 8px;
   text-align: center;
   background: #009D57;
