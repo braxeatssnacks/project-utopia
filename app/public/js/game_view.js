@@ -46,6 +46,8 @@ $(document).ready(function() {
       data: { action: 'submit', data: content },
       success: function(resp) {
         // console.log('we got sum ', resp);
+        // generate a star with those coordinates
+        createStar(100, 100);
         $(self).removeClass('ajax-in-progress').html('submit');
       }
     });

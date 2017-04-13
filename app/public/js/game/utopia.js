@@ -2,8 +2,8 @@ let width = $('#game').width();
 let height = $('#game').height();
 
 const phaserMethods = { preload: preload, create: create, update: update };
-const game = new Phaser.Game(width, height, Phaser.AUTO, 'game', phaserMethods);
-
+window.game = new Phaser.Game(width, height, Phaser.AUTO, 'game', phaserMethods);
+let game = window.game;
 
 function preload() { // assets
   game.load.image('sky', 'img/sprites/sky.png');
@@ -13,7 +13,7 @@ function preload() { // assets
 }
 
 // instance vars
-let sky, platforms, ground, ledge, player, cursors;
+let sky, platforms, stars, ground, ledge, player, cursors;
 
 function create() { // create game structure
   game.physics.startSystem(Phaser.Physics.ARCADE); // set physics
@@ -25,9 +25,17 @@ function create() { // create game structure
   ground.scale.setTo(4, 4);
   ground.body.immovable = true;
 
-  ledge = platforms.create(400, 400, 'ground'); // ledges
-  ledge.body.immovable = true;
+  // stars
+  stars = game.add.group();
+  stars.enableBody = true;
+
+
+  // ledges
   ledge = platforms.create(-150, 250, 'ground');
+  ledge.body.immovable = true;
+  ledge = platforms.create(400, 400, 'ground');
+  ledge.body.immovable = true;
+  ledge = platforms.create(900, 250, 'ground');
   ledge.body.immovable = true;
 
   player = game.add.sprite(380, game.world.height - 120, 'dude'); // character
@@ -36,7 +44,7 @@ function create() { // create game structure
   game.camera.follow(player);
 
   player.body.bounce.y = 0.1;
-  player.body.gravity.y = 350;
+  player.body.gravity.y = 380;
   player.body.collideWorldBounds = true;
 
   player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -66,8 +74,12 @@ function update() {
     }
 
     if (cursors.up.isDown && player.body.touching.down && hitPlatform) { // can jump if on ground
-      player.body.velocity.y = -350;
+      player.body.velocity.y = -450;
     }
   }
 
+}
+
+function createStar(xCoord, yCoord) {
+  let star = stars.create(xCoord, yCoord, 'star');
 }
