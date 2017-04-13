@@ -27,9 +27,8 @@ Stage.prototype.sanitize = function(data) {
 
 // update datetime
 Stage.update = function(game_id, stage_id, callback) {
-  // query
   let q = Util.SQL`UPDATE stages SET date_updated=${new Date()}\
-    WHERE game_id=${game_id} AND WHERE stage_id=${stage_id}`;
+    WHERE game_id=${game_id} AND id=${stage_id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
     return callback(null, true);
@@ -37,9 +36,8 @@ Stage.update = function(game_id, stage_id, callback) {
 };
 // increment attempts
 Stage.addAttempt = function(game_id, stage_id, callback) {
-  // query
   let q = Util.SQL`UPDATE stages SET attempts=attempts+1\
-      WHERE game_id=${game_id} AND WHERE stage_id=${stage_id}`;
+      WHERE game_id=${game_id} AND id=${stage_id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
     return callback(null, true);
@@ -48,12 +46,12 @@ Stage.addAttempt = function(game_id, stage_id, callback) {
 
 // submit code
 Stage.submitCode = function(code, game_id, stage_id, callback) {
-  // query
   let q = Util.SQL`UPDATE stages SET code=${code}\
-    WHERE game_id=${game_id} AND WHERE stage_id=${stage_id}`;
+    WHERE game_id=${game_id} AND id=${stage_id}`;
   pool.query(q, function(err, data) {
     // increment attempts
     if (err) return callback(err);
+    console.log('increment attempts');
     Stage.addAttempt(game_id, stage_id, function(err, respAttempt) {
       if (err) return callback(err);
       // date updated
@@ -63,6 +61,45 @@ Stage.submitCode = function(code, game_id, stage_id, callback) {
         return callback(null, respAttempt && respUpdate);
       });
     });
+  });
+};
+
+// check if exists
+Stage.checkStage = function(stage_number, game_id, callback) {
+  let q = Util.SQL`SELECT COUNT(1) FROM stages\
+    WHERE\
+    id=${stage_number} AND\
+    game_id=${game_id}`;
+
+  pool.query(q, function(err, data) {
+    if (err) return callback(err);
+    return callback(null, data.rowCount);
+  });
+};
+
+// create stage
+Stage.create = function(stage_number, game_id, callback) {
+  Stage.checkStage(stage_number, game_id, function(err, exists) {
+    if (!exists) { // create stage
+      let q = Util.SQL`INSERT INTO stages(\
+        id,\
+        date_started,\
+        date_updated,\
+        attempts,\
+        game_id\
+      )\
+      VALUES(\
+        ${stage_number},\
+        ${new Date()},\
+        ${null},\
+        ${0},\
+        ${game_id}\
+      )`;
+      pool.query(q, function(err, data) {
+        if (err) return callback(err);
+        return callback(null, true);
+      });
+    }
   });
 };
 

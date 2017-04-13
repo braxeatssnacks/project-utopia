@@ -62,7 +62,6 @@ Game.prototype.save = function(callback) {
   self.data = self.sanitize(self.data);
 
   if (self.data.id == null) { // new entry
-    // query
     let q = Util.SQL`INSERT INTO games(\
       user_id,\
       classroom_id,\
@@ -86,7 +85,6 @@ Game.prototype.save = function(callback) {
 
 // SELECT game info retrieve by id
 Game.findByID = function(id, callback) {
-  // query
   let q = Util.SQL`SELECT * FROM games WHERE id=${id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
@@ -96,7 +94,6 @@ Game.findByID = function(id, callback) {
 
 // SELECT games list info retrieve by id
 Game.listByUserID = function(user_id, callback) {
-  // query
   let q = Util.SQL`SELECT * FROM games WHERE user_id=${user_id}\
    ORDER BY date_accessed DESC`;
   pool.query(q, function(err, data) {

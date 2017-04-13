@@ -16,8 +16,7 @@ var CREATE_DB_STRUCT = {
   classroom_id varchar(50), \
   current_stage integer,\
   date_accessed date, \
-  FOREIGN KEY(user_id) REFERENCES users),\
-  FOREIGN KEY(current_stage) REFERENCES stages)',
+  FOREIGN KEY(user_id) REFERENCES users),',
 
   // STAGES table
   stagesTable: 'CREATE TABLE IF NOT EXISTS stages(\
@@ -29,8 +28,6 @@ var CREATE_DB_STRUCT = {
   attempts integer, \
   code varchar(5000), \
   game_id integer, \
-  user_id integer, \
-  FOREIGN KEY(user_id) REFERENCES users,\
   FOREIGN KEY(game_id) REFERENCES games)'
 };
 

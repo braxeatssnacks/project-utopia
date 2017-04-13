@@ -27,19 +27,38 @@ module.exports = function(modules) {
       let newGame = new Game(gameConfig);
       console.log('newgame: ', newGame);
       newGame.save(function(err, data) {
+        if (err) console.log(err);
         console.log(`user ${newGame.user_id}'s game ${newGame.id} created`);
       });
     });
 
+
+  /* GET PARAMS
+   *  gameID = req.query.id
+   *  stage = req.query.stage
+   */
   router.route('/game')
-    .get(function(req, resp) { // render
-      console.log(req.query);
-      // start game
+    .get(function(req, resp) { // render game stage
+      // create stage if doesn't exist
+      Stage.create(req.query.stage, req.query.id, function(err, status) {
+        if (err) console.log(err);
+      });
       resp.render('game');
     })
     .post(function(req, resp) { // db work
-      // attempted code submission
-      console.log(req.query);
-      resp.end();
+      if (req.body.action === 'submit') { // attempted code submission
+        let stage_id = req.query.stage;
+        let game_id = req.query.id;
+        let code = req.body.data;
+        // submit code
+        Stage.submitCode(code, game_id, stage_id, function(err, status) {
+          if (err) console.log(err);
+          console.log(status);
+        });
+      } else if (req.body.action === 'complete') { // complete stage
+        // TODO
+      }
+
+      resp.send();
     });
 };

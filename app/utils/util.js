@@ -4,6 +4,7 @@ var Util = function() {};
 
 /* STATIC METHODS */
 
+// ECMA6 backticks
 Util.SQL = function(parts, ...values) {
   return {
     text: parts.reduce(function(prev, curr, i) {

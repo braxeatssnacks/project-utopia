@@ -21,7 +21,6 @@ User.prototype.changeName = function(name) {
   let self = this;
   self.data.name = name;
 
-  // query
   let q = Util.SQL`UPDATE users SET name=${self.data.name}\
     WHERE id=${self.data.id}`;
 
@@ -36,7 +35,6 @@ User.prototype.changeEmail = function(email) {
   let self = this;
   self.data.email = email;
 
-  // query
   let q = Util.SQL`UPDATE users SET email=${self.data.email}\
     WHERE id=${self.data.id}`;
 
@@ -70,7 +68,6 @@ User.prototype.save = function(callback) {
   self.data = self.sanitize(self.data);
 
   if (self.data.id == null) { // new entry
-    // query
     let q = Util.SQL`INSERT INTO users(\
       name,\
       email,\
@@ -95,7 +92,6 @@ User.prototype.save = function(callback) {
 
 // SELECT user info retrieve by id
 User.findByID = function(id, callback) {
-  // query
   let q = Util.SQL`SELECT * FROM users WHERE id = ${id}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);

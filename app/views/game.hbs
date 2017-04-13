@@ -3,18 +3,21 @@
 
 <div class="game-wrapper">
 
+  <!-- collapsible -->
+  <div id="hidden-collapse-bar" data-action="panel-toggle">&nbsp;</div>
+
   <!-- code panel -->
   <div id="code-panel" class="col col-4 right">
     <div class="code-header">
-      <div id="panel-toggle" class="header-button">
+      <div class="header-button">
         <div class="head-icon-background circle">
           <img class="head-icon" src="img/spaceship.svg" />
         </div>
       </div>
     </div>
     <div class="code-container">
-      <div class="code" contenteditable="true"></div>
-      <div class="submit-button rounded">submit</div>
+      <div id="code-submission" class="code" contenteditable="true"></div>
+      <div class="submit-button rounded" data-action="code-submit">submit</div>
     </div>
   </div>
   

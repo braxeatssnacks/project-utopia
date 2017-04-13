@@ -8,12 +8,23 @@
   z-index: 0;
 }
 
+#hidden-collapse-bar {
+  height: 100%;
+  width: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+}
+
 #code-panel {
   height: 100%;
   /*background: #1A191A;*/
-  background: rgba(0,0,0,0.9);
+  background: rgba(26, 25, 26, 0.95);
   font-family: "Inconsolata", monospace;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   position: absolute;
   right: 0;
@@ -75,15 +86,29 @@
 #code-panel .submit-button {
   height: 30px;
   width: calc(100% - 14px);
-  padding: 8px;
+  padding: 6px;
   text-align: center;
-  background: #009D57;
+  background: #ff5959;
+
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: 0.3s;
 }
 
-#code-panel .submit-button:hover {
-  background: #00d073;
+#code-panel .submit-button.ajax-in-progress { /* pacman throwback */
+  background: #1A1A1A;
+}
+
+#code-panel .submit-button .interior {
+  height: 100%;
+  width: 100%;
+}
+
+.submit-button .loading-wheel {
+  height: 16px;
+}
+
+#code-panel .submit-button:not(.ajax-in-progress):hover {
+  background: #009D57;
 }
