@@ -40,12 +40,12 @@ function createWindow() {
   // create new draggable window
    win = new BrowserWindow({
      title: 'Project Utopia',
-     minWidth: 1100,
-     minHeight: 650,
-     width: 1100,
-     height: 650,
-     maxWidth: 1100,
-     maxHeight: 650,
+     minWidth: 1200,
+     minHeight: 700,
+     width: 1200,
+     height: 700,
+     maxWidth: 1200,
+     maxHeight: 700,
      fullscreen: false,
      titleBarStyle: 'hidden'
    });

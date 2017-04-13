@@ -88,7 +88,7 @@
   width: calc(100% - 14px);
   padding: 6px;
   text-align: center;
-  background: #ff5959;
+  background: #007A87;
 
   cursor: pointer;
   text-transform: uppercase;
@@ -111,4 +111,15 @@
 
 #code-panel .submit-button:not(.ajax-in-progress):hover {
   background: #009D57;
+}
+
+
+/* SYNTAX HIGHLIGHTING */
+
+.code .comment {
+  color: #ff5959;
+}
+
+.code .var {
+  color: #d5c953;
 }

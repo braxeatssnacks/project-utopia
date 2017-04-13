@@ -16,7 +16,30 @@
       </div>
     </div>
     <div class="code-container">
-      <div id="code-submission" class="code" contenteditable="true"></div>
+      <div id="code-submission" class="code" contenteditable="true">
+        <span class="comment">
+          /* LESSON 1: VARAIBLES <br>
+          &nbsp;* the <span class="var">var</span> keyword denotes a variable<br>
+          &nbsp;* within these we can store information we want use later<br>
+          &nbsp;* here, let's store the coordinates of a star object in a variable<br>
+        </span> <br>
+
+        <span class="comment">// defined function that will make a star in game</span>
+        <span class="var">var</span> createStar = function(Obj) { <br>
+        &nbsp; &nbsp; game.addSprite('star', Obj.x, Obj.y); <br>
+        }; <br> <br>
+        <span class="var">var</span> starCoords = { <br>
+        <p data-coords="x">
+          &nbsp; &nbsp; x: <span class="comment">// insert your x coordinate here</span>
+        </p>
+        <p data-coords="y">
+          &nbsp; &nbsp; y: <span class="comment">// insert your y coordinate here</span>
+        </p>
+
+        }; <br> <br>
+        <span class="comment">// execute our written function</span>
+        createStar(starCoords);
+      </div>
       <div class="submit-button rounded" data-action="code-submit">submit</div>
     </div>
   </div>
