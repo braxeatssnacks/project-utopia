@@ -40,16 +40,41 @@ $(document).ready(function() {
     $(self).addClass('ajax-in-progress').html(loadingWheel);
 
     // insert code attempt into db
+    
     $.ajax({
       url: window.location.href,
       type: 'POST',
       data: { action: 'submit', data: content },
       success: function(resp) {
-        // console.log('we got sum ', resp);
+        // series of checks
+        let error = false;
+
+        // parse entry
+        let xText = $('#code-submission').find('[data-coords]')[0].innerText;
+        let yText = $('#code-submission').find('[data-coords]')[1].innerText;
+
+        let xTarget, yTarget, xCoord, yCoord;
+        if ((xTarget = xText.indexOf('x:')) > -1) {
+          let end = xText.indexOf('/') > -1 ? xText.indexOf('/') : xText.length;
+          xCoord = Number(xText.substring(xTarget+2, end).trim());
+        } else { error = true; }
+        if ((yTarget = yText.indexOf('y:')) > -1) {
+          let end = yText.indexOf('/') > -1 ? yText.indexOf('/') : yText.length;
+          yCoord = Number(yText.substring(yTarget+2, end).trim());
+        } else { error = true; }
+
+        if (isNaN(xCoord) || isNaN(yCoord)) {
+          error = true;
+        } else if (!error) { // success
+          createStar(xCoord, yCoord);
+        }
         // generate a star with those coordinates
-        createStar(100, 100);
         $(self).removeClass('ajax-in-progress').html('submit');
       }
     });
   });
 });
+
+function getCoordinates(code) {
+  return code;
+}

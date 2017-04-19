@@ -29,7 +29,6 @@ function create() { // create game structure
   stars = game.add.group();
   stars.enableBody = true;
 
-
   // ledges
   ledge = platforms.create(-150, 250, 'ground');
   ledge.body.immovable = true;
