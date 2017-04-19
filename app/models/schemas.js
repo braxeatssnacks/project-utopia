@@ -12,7 +12,7 @@ module.exports = {
     user_id: null,
     classroom_id: null,
     date_accessed: null,
-    current_stage: null,
+    current_stage: 1,
   },
   stage: {
     id: null,

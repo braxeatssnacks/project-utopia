@@ -30,6 +30,19 @@ Game.prototype.addClassroom = function(classroom_id) {
   });
 };
 
+// update current stage
+Game.prototype.nextStage = function() {
+  let self = this;
+  self.data.currentStage += 1;
+
+  let q = Util.SQL`UPDATE games SET current_stage=${self.data.current_stage}\
+    WHERE id=${self.data.id}`;
+  pool.query(q, function(err, data) {
+    if (err) return callback(err);
+    return callback(null, true); // return success;
+  });
+};
+
 // log time accessed
 Game.prototype.logDatetime = function() {
   let self = this;

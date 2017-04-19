@@ -40,7 +40,7 @@ $(document).ready(function() {
     $(self).addClass('ajax-in-progress').html(loadingWheel);
 
     // insert code attempt into db
-    
+
     $.ajax({
       url: window.location.href,
       type: 'POST',

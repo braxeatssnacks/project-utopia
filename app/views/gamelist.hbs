@@ -13,7 +13,7 @@
     <div class="gamelist rounded">
       {{#if games}}
         {{#each games}}
-          <a href="/game?id={{id}}" class="game-button anchor-block">
+          <a href="/game?id={{id}}&stage={{current_stage}}" class="game-button anchor-block">
             game-{{@index}}
           </a>
         {{/each}}
