@@ -9,10 +9,11 @@ module.exports = function(modules) {
   let Stage = require(`${__dirname}/../models/stage.js`); // Stage
 
   var testID = 10; // TODO: set up session to hold user_id
+  var id;
 
   router.route('/gamelist')
     .get(function(req, resp) { // render view of games list
-      let id = req.query.id || testID;
+      id = req.query.id || testID;
 
       Game.listByUserID(id, function(err, games) { // get games list
         if (err) console.log('error: ', err);
@@ -44,16 +45,18 @@ module.exports = function(modules) {
         if (err) console.log(err);
       });
       resp.render('game');
+      console.log(`user ${testID}'s game ${game_id} is on stage ${stage_id}`); // TODO: change testID
     })
     .post(function(req, resp) { // db work
       if (req.body.action === 'submit') { // attempted code submission
         let stage_id = req.query.stage;
         let game_id = req.query.id;
         let code = req.body.data;
+
         // submit code
         Stage.submitCode(code, game_id, stage_id, function(err, status) {
           if (err) console.log(err);
-          console.log(status);
+          console.log(status ? 'successful submission' : 'failed submission');
         });
       } else if (req.body.action === 'complete') { // complete stage
         // TODO

@@ -51,7 +51,6 @@ Stage.submitCode = function(code, game_id, stage_id, callback) {
   pool.query(q, function(err, data) {
     // increment attempts
     if (err) return callback(err);
-    console.log('increment attempts');
     Stage.addAttempt(game_id, stage_id, function(err, respAttempt) {
       if (err) return callback(err);
       // date updated

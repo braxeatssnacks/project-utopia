@@ -51,7 +51,7 @@ function createWindow() {
    });
 
   // load app index.html
-  win.loadURL(`http://${config.server.host}:${config.server.port}/game?id=2&stage=1`);
+  win.loadURL(`http://${config.server.host}:${config.server.port}/gamelist`);
 
   // console.log(win);
   win.focus();
