@@ -45,7 +45,7 @@ module.exports = function(modules) {
         if (err) console.log(err);
       });
       resp.render('game');
-      console.log(`user ${testID}'s game ${game_id} is on stage ${stage_id}`); // TODO: change testID
+      console.log(`gamer ${testID}'s game ${req.query.id} is on stage ${req.query.stage}`); // TODO: change testID
     })
     .post(function(req, resp) { // db work
       if (req.body.action === 'submit') { // attempted code submission
