@@ -6,7 +6,7 @@ electron wrapped express app -- this project is wild lol
 this is the local portion, and primary component of the product: the interface
 through which a user will play a game and code in real time
 
-!!! set personal configurations in `config.json`
+!!! don't forget to set personal configurations in `config.json`
 
 ##### DIRECTORY STRUCTURE
 
