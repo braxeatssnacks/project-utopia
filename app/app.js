@@ -4,7 +4,7 @@ module.exports = function(config) {
   // server configuration
   const fs = require('fs');
   const express = require('express');
-  const session = require('express-session');
+  const expressSession = require('express-session');
   const app = express();
 
   // set-up db jazz
@@ -25,7 +25,7 @@ module.exports = function(config) {
   // setup global directories & middlewares
   const bodyParser = require('body-parser');
 
-  app.use(session({
+  app.use(expressSession({
     secret: process.env.SESSION || config.session.secret,
     resave: false,
     saveUninitialized: false
@@ -35,7 +35,7 @@ module.exports = function(config) {
   app.use(express.static(`${__dirname}/public`));
 
   // modules for dependency injection
-  var sess;
+  var session;
   const modules = {
     app: app,
     bodyParser: bodyParser,
@@ -43,7 +43,7 @@ module.exports = function(config) {
     express: express,
     fs: fs,
     pool: pool,
-    session: sess
+    session: session
   };
 
   // setup global route controllers

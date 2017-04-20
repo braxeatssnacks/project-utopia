@@ -60,7 +60,7 @@ function update() {
   player.body.velocity.x = 0;
 
   // KEY LISTENERS
-  if (!window.paneFocus) {
+  if (!window.paneFocus) { // TODO: destroy arrow key listeners on pane focus
     if (cursors.left.isDown) { // left
       player.body.velocity.x = -150;
       player.animations.play('left');

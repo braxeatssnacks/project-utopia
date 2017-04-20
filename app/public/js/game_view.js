@@ -3,6 +3,31 @@ window.paneFocus = false;
 
 $(document).ready(function() {
 
+  // TEST CORS to remote app
+  $.ajax({
+    url: 'http://104.236.16.42:5000/update_stage',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      name: 'Fredrick Kofi',
+      email: 'fkt2105@columbia.edu',
+      stage_number: '1',
+      stage_date_started: new Date(),
+      stage_date_completed: new Date(),
+      attempts: '2',
+      code: 'codey codey kofi',
+      classbox: '1',
+      section_id: '1',
+      section_name: 'class1'
+    }),
+    success: function(resp) {
+      console.log(resp);
+    },
+    error: function(err) {
+      console.log(err);
+    }
+  });
+
   $('#code-submission')
     .focusin(function() {
       window.paneFocus = true;
@@ -40,7 +65,6 @@ $(document).ready(function() {
     $(self).addClass('ajax-in-progress').html(loadingWheel);
 
     // insert code attempt into db
-
     $.ajax({
       url: window.location.href,
       type: 'POST',
