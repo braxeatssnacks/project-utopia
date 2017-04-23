@@ -2,18 +2,23 @@
 module.exports = function(modules) {
   let router = modules.app;
   let pool = modules.pool; // db
+  let session = modules.session;
 
   let Util = require(`${__dirname}/../utils/util.js`); // Utility
   let User = require(`${__dirname}/../models/user.js`); // User
   let Game = require(`${__dirname}/../models/game.js`); // Game
   let Stage = require(`${__dirname}/../models/stage.js`); // Stage
 
-  var testID = 10; // TODO: set up session to hold user_id
-  var id;
+  let id; // session ID
 
   router.route('/gamelist')
     .get(function(req, resp) { // render view of games list
-      id = req.query.id || testID;
+      session = req.session;
+      if (session.email) { // user logged in
+        User.findByEmail(session.email, function(err, userObj) {
+          id = userObj.id;
+        });
+      } else { resp.redirect('/login'); }
 
       Game.listByUserID(id, function(err, games) { // get games list
         if (err) console.log('error: ', err);
@@ -22,7 +27,7 @@ module.exports = function(modules) {
     })
     .post(function(req, resp) { // create game
       let gameConfig = {
-        user_id: parseInt(req.body.user_id || testID),
+        user_id: parseInt(id),
         classroom_id: parseInt(req.body.classroom_id || null)
       };
       let newGame = new Game(gameConfig);

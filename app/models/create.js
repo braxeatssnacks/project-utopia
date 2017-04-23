@@ -6,7 +6,7 @@ var CREATE_DB_STRUCT = {
   usersTable: 'CREATE TABLE IF NOT EXISTS users(\
   id SERIAL PRIMARY KEY, \
   name varchar(100), \
-  email varchar(100), \
+  email varchar(100) UNIQUE, \
   password varchar(150)',
 
   // GAMES table

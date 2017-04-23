@@ -80,10 +80,11 @@ User.prototype.save = function(callback) {
     )`;
 
     pool.query(q, function(err, data) {
-      if (err) return callback(err);
+      if (err) return callback(err.error);
       return callback(null, true); // return success
     });
   }
+
   return callback("entry already exists: update instead of save"); // existing entry
 };
 
@@ -93,6 +94,15 @@ User.prototype.save = function(callback) {
 // SELECT user info retrieve by id
 User.findByID = function(id, callback) {
   let q = Util.SQL`SELECT * FROM users WHERE id = ${id}`;
+  pool.query(q, function(err, data) {
+    if (err) return callback(err);
+    return callback(null, new User(data.rows[0]).data); // return User
+  });
+};
+
+// SELECT user info retrieve by email
+User.findByEmail = function(email, callback) {
+  let q = Util.SQL`SELECT * FROM users WHERE email = ${email}`;
   pool.query(q, function(err, data) {
     if (err) return callback(err);
     return callback(null, new User(data.rows[0]).data); // return User
