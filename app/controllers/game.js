@@ -25,17 +25,18 @@ module.exports = function(modules) {
         resp.render('gamelist', { games: games });
       });
     })
-    .post(function(req, resp) { // create game
-      let gameConfig = {
-        user_id: parseInt(id),
-        classroom_id: parseInt(req.body.classroom_id || null)
-      };
-      let newGame = new Game(gameConfig);
-      console.log('newgame: ', newGame);
-      newGame.save(function(err, data) {
-        if (err) console.log(err);
-        console.log(`user ${newGame.user_id}'s game ${newGame.id} created`);
-      });
+    .post(function(req, resp) {
+      if (req.body.action === 'create') { // create game
+        let gameConfig = {
+          user_id: parseInt(id),
+          classroom_id: parseInt(req.body.classroom_id) || null
+        };
+        let newGame = new Game(gameConfig);
+        newGame.save(function(err, insertedID) {
+          if (err) console.log(err);
+          resp.end(insertedID.toString()); // send game id
+        });
+      }
     });
 
 
@@ -50,7 +51,7 @@ module.exports = function(modules) {
         if (err) console.log(err);
       });
       resp.render('game');
-      console.log(`gamer ${testID}'s game ${req.query.id} is on stage ${req.query.stage}`); // TODO: change testID
+      console.log(`gamer ${id}'s game ${req.query.id} is on stage ${req.query.stage}`);
     })
     .post(function(req, resp) { // db work
       if (req.body.action === 'submit') { // attempted code submission

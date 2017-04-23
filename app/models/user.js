@@ -77,11 +77,12 @@ User.prototype.save = function(callback) {
       ${self.data.name.trim()},\
       ${self.data.email.trim()},\
       ${self.data.password.trim()}\
-    )`;
+    )\
+    RETURNING id`;
 
-    pool.query(q, function(err, data) {
-      if (err) return callback(err.error);
-      return callback(null, true); // return success
+    pool.query(q, function(err, insertedID) {
+      if (err) return callback(err);
+      return callback(null, insertedID); // return success
     });
   }
 

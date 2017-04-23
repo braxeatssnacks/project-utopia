@@ -74,24 +74,28 @@ Game.prototype.save = function(callback) {
   let self = this;
   self.data = self.sanitize(self.data);
 
-  if (self.data.id == null) { // new entry
+  if (!self.data.id) { // new entry
     let q = Util.SQL`INSERT INTO games(\
       user_id,\
       classroom_id,\
-      date_accessed\
+      date_accessed,\
+      current_stage\
     )\
     VALUES(\
       ${self.data.user_id},\
       ${self.data.classroom_id},\
-      ${new Date()}\
-    )`;
+      ${new Date()},\
+      ${1}\
+    )\
+    RETURNING id`;
 
-    pool.query(q, function(err, data) {
+    pool.query(q, function(err, insertedID) {
       if (err) return callback(err);
-      return callback(null, true); // return success
+      return callback(null, insertedID.rows[0].id); // return id of successful entry
     });
+  } else {
+    return callback("game entry already exists: update instead of save"); // existing entry
   }
-  return callback("entry already exists: update instead of save"); // existing entry
 };
 
 /* STATIC METHODS */
