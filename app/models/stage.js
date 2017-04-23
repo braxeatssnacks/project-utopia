@@ -72,7 +72,7 @@ Stage.checkStage = function(stage_number, game_id, callback) {
 
   pool.query(q, function(err, data) {
     if (err) return callback(err);
-    return callback(null, data.rowCount);
+    return callback(null, data.rows.count);
   });
 };
 
@@ -93,10 +93,11 @@ Stage.create = function(stage_number, game_id, callback) {
         ${null},\
         ${0},\
         ${game_id}\
-      )`;
+      )\
+      RETURNING id`;
       pool.query(q, function(err, data) {
         if (err) return callback(err);
-        return callback(null, true);
+        return callback(null, data.rows[0].id);
       });
     }
   });

@@ -35,7 +35,7 @@ module.exports = function(config) {
   app.use(express.static(`${__dirname}/public`));
 
   // modules for dependency injection
-  var session;
+  let session;
   const modules = {
     app: app,
     bodyParser: bodyParser,

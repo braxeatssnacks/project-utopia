@@ -17,13 +17,12 @@ module.exports = function(modules) {
       if (session.email) { // user logged in
         User.findByEmail(session.email, function(err, userObj) {
           id = userObj.id;
+          Game.listByUserID(id, function(err, games) { // get games list
+            if (err) console.log('error: ', err);
+            resp.render('gamelist', { games: games });
+          });
         });
       } else { resp.redirect('/login'); }
-
-      Game.listByUserID(id, function(err, games) { // get games list
-        if (err) console.log('error: ', err);
-        resp.render('gamelist', { games: games });
-      });
     })
     .post(function(req, resp) {
       if (req.body.action === 'create') { // create game
@@ -51,7 +50,7 @@ module.exports = function(modules) {
         if (err) console.log(err);
       });
       resp.render('game');
-      console.log(`gamer ${id}'s game ${req.query.id} is on stage ${req.query.stage}`);
+      console.log(`gamer ${id}'s game with id ${req.query.id} is on stage ${req.query.stage}`);
     })
     .post(function(req, resp) { // db work
       if (req.body.action === 'submit') { // attempted code submission
