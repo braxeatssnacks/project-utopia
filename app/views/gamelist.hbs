@@ -1,5 +1,6 @@
 
 <link rel="stylesheet" type="text/css" href="/css/list.css">
+<script src="js/gamelist_view.js"></script>
 
 <div class="gamelist-wrapper flex-center">
 
@@ -21,6 +22,15 @@
         You have no games! Let's start one.
       {{/if}}
       <div id="new-game" class="new-game-button anchor-block">new game</div>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div id="new-game-popup" class="new-game-modal rounded">
+    <div class="modal-interior">
+      <p>if your teacher gave you a classroom id, then insert it here; otherwise, leave it empty</p>
+      <input type="text" name="classroom" />
+      <button type="button">create game</button>
     </div>
   </div>
 

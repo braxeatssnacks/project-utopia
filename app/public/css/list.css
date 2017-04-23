@@ -41,13 +41,34 @@
   border-color: #007A87;
 }
 
-.new-game-button {
+#new-game {
   color: #ffffff;
   background-color: #EF3E42;
   border-color: #EF3E42;
 }
 
-.new-game-button:hover {
+#new-game:hover {
   background-color: #009D57;
+  border-color: #007A87;
   cursor: pointer;
+}
+
+.new-game-modal {
+  position: absolute;
+  width: 600px;
+  height: 460px;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -230px;
+  background-color: #ffffff;
+  border: 3px solid #007A87;
+  color: #000000;
+  display: none;
+}
+
+.new-game-modal .modal-interior {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
