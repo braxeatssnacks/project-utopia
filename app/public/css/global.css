@@ -8,7 +8,8 @@
 #__titlebar__ {
   width: 100vw;
   height: 22px;
-  background-color: #3B3F41;
+  /*background-color: #3B3F41;*/
+	background-color: #000000;
   -webkit-app-region: drag;
 }
 
@@ -38,7 +39,8 @@ html, body {
 	position: relative;
 	height: 100vh;
   width: 100vw;
-	background-color: #2F2732;
+	/*background-color: #2F2732;*/
+	background-color: #ffffff;
 	border-color: #404F5A;
 
 	font-family: "Gotham Rounded", monospace;
@@ -49,7 +51,7 @@ html, body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: inherit;
 }
 

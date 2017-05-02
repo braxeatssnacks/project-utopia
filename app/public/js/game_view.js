@@ -16,9 +16,7 @@ $(document).ready(function() {
   //     stage_date_completed: new Date(),
   //     attempts: '2',
   //     code: 'codey codey kofi',
-  //     classbox: '1',
   //     section_id: '1',
-  //     section_name: 'class1'
   //   }),
   //   success: function(resp) {
   //     console.log(resp);
@@ -56,7 +54,7 @@ $(document).ready(function() {
     }
   });
 
-  /* CODE SUBMISSION */
+  /* CODE SUBMISSION  */
   $('[data-action=code-submit]').click(function() {
     let content = $('#code-submission').text().trim();
     let self = this;

@@ -1,14 +1,27 @@
-<div class="login-wrapper">
+<script src="js/auth_view.js"></script>
 
-  <h1>login</h1>
+<div class="login-wrapper flex-center">
+  <div class="auth-modal">
+    <div class="top-section">
+      <img class="main-logo" src="img/spaceship.svg" />
+    </div>
 
-  <div class="auth-container">
-    <form action="/login" method="post">
-      <input type="text" name="email" placeholder="example@mail.com" />
-      <input type="password" name="password" placeholder="password" />
-      <button type="submit">enter</button>
-    </form>
+    <div class="form-section flex-center">
+      <form class="login-form" action="/login" method="POST">
+        <div class="input-wrapper" data-type="email">
+          <input name="email" type="text" placeholder="email" />
+        </div>
+
+        <div class="input-wrapper" data-type="password">
+          <input name="password" type="password" placeholder="password" />
+        </div>
+      </form>
+    </div>
+
+    <div class="bottom-section">
+      <div id="login" class="auth-button circle">&nbsp;</div>
+      <p class="foot-tag">Don’t have an account yet? <a href="/signup">Sign up.</a></p>
+    </div>
+
   </div>
-
-  <p>Don't have an account yet? <a href="/signup">Sign-up</a>.</p>
 </div>

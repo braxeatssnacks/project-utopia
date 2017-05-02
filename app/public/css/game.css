@@ -113,6 +113,10 @@
   background: #009D57;
 }
 
+#code-panel .lint {
+  text-align: left;
+}
+
 
 /* SYNTAX HIGHLIGHTING */
 

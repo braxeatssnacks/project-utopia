@@ -1,4 +1,4 @@
-.index-wrapper, .gamelist-wrapper {
+[class*='-wrapper'] {
   text-align: center;
 }
 
@@ -20,7 +20,7 @@ main > .image-background {
 /* nav head */
 
 nav {
-  background-color: #FF5A61;
+  background-color: #ff5a61;
   color: #3B3F41;
   font-size: 14px;
   height: 75px;
