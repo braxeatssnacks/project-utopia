@@ -10,7 +10,7 @@ let game = window.game;
 function preload() { // assets
   game.load.image('sky', 'img/sprites/sky.png');
   game.load.image('ground', 'img/sprites/platform.png');
-  game.load.image('star', 'img/sprites/star.png');
+  game.load.image('giphy', 'img/sprites/giphy.gif');
   game.load.spritesheet('dude', 'img/sprites/dude.png', 32, 48);
 }
 
@@ -32,12 +32,12 @@ function create() { // create game structure
   stars.enableBody = true;
 
   // ledges
-  // ledge = platforms.create(-150, 250, 'ground');
-  // ledge.body.immovable = true;
-  // ledge = platforms.create(400, 400, 'ground');
-  // ledge.body.immovable = true;
-  // ledge = platforms.create(900, 250, 'ground');
-  // ledge.body.immovable = true;
+  ledge = platforms.create(-150, 250, 'ground');
+  ledge.body.immovable = true;
+  ledge = platforms.create(400, 400, 'ground');
+  ledge.body.immovable = true;
+  ledge = platforms.create(900, 250, 'ground');
+  ledge.body.immovable = true;
 
   player = game.add.sprite(380, game.world.height - 120, 'dude'); // character
 
@@ -53,13 +53,14 @@ function create() { // create game structure
 
   cursors = game.input.keyboard.createCursorKeys(); // key listeners
 
-  // make stars appear in game 
-  let min = 50;
-  let max = 550;
+  // make diamonds appear in game 
+  let min = 10;
+  let max = 500;
 
-  for (var i = 0; i < 15; i++) {
-    createStar(Math.floor(Math.random() * (max - min + 1) + min),Math.floor(Math.random() * (max - min + 1) + min));
+  for (var i = 0; i < 11; i++) {
+    createDiamond(Math.floor(Math.random() * (max - min + 1) + min),Math.floor(Math.random() * (max - min + 1) + min));
   }
+
 }
 
 function update() {
@@ -89,11 +90,6 @@ function update() {
 
 }
 
-function createStar(xCoord, yCoord) {
-  let star = stars.create(xCoord, yCoord, 'star');
-}
-
-function collectStar(player, star) {
-    // Removes the star from the screen
-    star.kill();
+function createDiamond(xCoord, yCoord) {
+  let star = stars.create(xCoord, yCoord, 'giphy');
 }
