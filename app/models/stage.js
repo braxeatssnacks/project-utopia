@@ -79,7 +79,7 @@ Stage.checkStage = function(stage_number, game_id, callback) {
 // create stage
 Stage.create = function(stage_number, game_id, callback) {
   Stage.checkStage(stage_number, game_id, function(err, exists) {
-    if (!exists) { // create stage
+    if (exists < 1) { // create stage
       let q = Util.SQL`INSERT INTO stages(\
         id,\
         date_started,\

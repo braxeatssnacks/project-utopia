@@ -3,28 +3,28 @@ window.paneFocus = false;
 
 $(document).ready(function() {
 
-  // // TEST CORS to remote app
-  // $.ajax({
-  //   url: 'http://104.236.16.42:5000/update_stage',
-  //   type: 'POST',
-  //   contentType: 'application/json',
-  //   data: JSON.stringify({
-  //     name: 'Fredrick Kofi',
-  //     email: 'fkt2105@columbia.edu',
-  //     stage_number: '1',
-  //     stage_date_started: new Date(),
-  //     stage_date_completed: new Date(),
-  //     attempts: '2',
-  //     code: 'codey codey kofi',
-  //     section_id: '1',
-  //   }),
-  //   success: function(resp) {
-  //     console.log(resp);
-  //   },
-  //   error: function(err) {
-  //     console.log(err);
-  //   }
-  // });
+  // TEST CORS to remote app
+  $.ajax({
+    url: 'http://104.236.16.42:5000/update_stage',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      name: 'Braxton Gunter',
+      email: 'beg2119@columbia.edu',
+      stage_number: '1',
+      stage_date_started: new Date(),
+      stage_date_completed: new Date(),
+      attempts: '3',
+      code: 'codey codey kofi',
+      section_id: '1',
+    }),
+    success: function(resp) {
+      console.log(resp);
+    },
+    error: function(err) {
+      console.log(err);
+    }
+  });
 
   $('#code-submission')
     .focusin(function() {
@@ -94,6 +94,9 @@ $(document).ready(function() {
         $(self).removeClass('ajax-in-progress').html('submit');
       }
     });
+
+    /* ASYNC UPLOAD TODO: */
+
   });
 });
 
