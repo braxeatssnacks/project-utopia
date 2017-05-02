@@ -22,6 +22,9 @@ module.exports = function(config) {
   app.set('view engine', 'hbs');
   app.set('views', `${__dirname}/views`);
 
+  // register helpers
+  const hbsHelpers = require('./utils/helpers.js')(hbs);
+
   // setup global directories & middlewares
   const bodyParser = require('body-parser');
 

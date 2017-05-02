@@ -31,7 +31,7 @@ module.exports = function(modules) {
         password: req.body.password
       });
 
-      newAccount.save(function(err, resp) {
+      newAccount.save(function(err, data) {
         if (err) { // account already exists
           resp.redirect('/login');
         } else {

@@ -49,7 +49,7 @@ module.exports = function(modules) {
       Stage.create(req.query.stage, req.query.id, function(err, status) {
         if (err) console.log(err);
       });
-      resp.render('game');
+      resp.render('game', { stage: req.query.stage });
       console.log(`gamer ${id}'s game with id ${req.query.id} is on stage ${req.query.stage}`);
     })
     .post(function(req, resp) { // db work
